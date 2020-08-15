@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+$dark: #555555;
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f0f0f0;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: white;
+  border: 1px solid $dark;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.adnat-logo {
+  font-size: 2em;
+  font-weight: 600;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid $dark;
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+  &:focus {
+    outline: none;
+  }
+}
+
+.error-msg {
+  color: red;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+#side-bar {
+  background-color: black;
+  height: 95vh;
+  width: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 5vh;
+  color: white;
+  align-items: center;
+  #top-options {
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-btn {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span {
+      font-size: 0.6em;
+      font-weight: 700;
+    }
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}

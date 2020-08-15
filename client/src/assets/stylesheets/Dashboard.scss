@@ -1,0 +1,122 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard-content {
+    padding: 20px;
+}
+
+#no-org-prompt {
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+#new-org-form {
+    width: 350px;
+    padding: 20px;
+    input {
+        margin: 5px 0;
+        width: 300px;
+    }
+}
+
+.org-list-item {
+    font-size: 0.9em;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    width: 500px;
+    background-color: white;
+    padding: 10px;
+    justify-content: space-between;
+    margin: 5px 0;
+    div {
+        span {
+            cursor: pointer;
+            margin: 5px;
+            color: green
+        }
+    }
+}
+
+
+#org-manage {
+    h3 {
+        margin: 0;
+    }
+    span {
+        font-size: 0.8em;
+    }
+    
+    #org-manage-bar {
+        margin-top: 20px;
+        button {
+            margin-right: 10px;
+        }
+    }
+
+    #shift-table {
+        font-size: 0.9em;
+        thead {
+            background-color: black;
+            color: white;
+            font-weight: 600;
+            td {
+                padding: 10px 20px;
+                border-color: black;
+            }
+        }
+        tbody {
+            background-color: white;
+            td {
+                padding: 10px;
+                text-align: right;
+                &:first-child {
+                    text-align: left;
+                }
+            }
+        }
+        svg {
+            font-size: 1.2em;
+            margin: 0 5px;
+            cursor: pointer;
+            color: #555555;
+        }
+    }
+}
+
+#profile-edit-form {
+    button {
+        margin-right: 10px;
+    }
+    #password-input {
+        margin-top: 30px;
+    }
+    .edit-item {
+        margin-bottom: 20px;
+        span {
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+        input {
+            font-family: 'Montserrat', sans-serif;
+            width: 300px;
+            background-color: #f0f0f0;
+            border: none;
+            border-bottom: 1px solid #555555;
+            padding: 10px 0;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+#filtering-bar {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    #name-search-input {
+        margin-left: 10px;
+    }
+}
