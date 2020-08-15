@@ -178,15 +178,33 @@ const ShiftTable = ({user, rate}) => {
                         </tr>
                     )
                 } else {
+                    const overtime = moment(shift.start).format("dddd") === "Sunday"
+                    const overnight = moment(shift.finish).diff(moment(shift.start), "minutes") < 1
+
+                    let shiftCost = ((shiftLength - shift.breakLength) / 60 * rate)
+                    if (overtime) shiftCost = shiftCost * 2;
+
+                    const startTime = moment(shift.start)
+                    const endOfDay = moment(shift.start).endOf('day')
+                    const minutesOfFirstDay = moment(endOfDay).diff(moment(startTime), "minutes") + 1
+
+                    if (overtime && overnight) {
+                        shiftCost = ((shiftLength - minutesOfFirstDay) / 60 * rate) + (minutesOfFirstDay / 60 * rate * 2);
+                    }
+
                     output.push(
                         <tr key={shift.id} >
-                            <td> {shiftUser.name} </td>
+                            <td> 
+                                {shiftUser.name} <br/>
+                                {overnight && <span style={{backgroundColor: "#ac0a0a", color: "white"}} className="label">overnight</span>} 
+                                {overtime && <span style={{backgroundColor: "green", color: "white"}} className="label">overtime</span>} 
+                            </td>
                             <td> {moment(shift.start).format('DD/MM/YYYY')} </td>
                             <td> {moment(shift.start).format("hh:mm a")} </td>
                             <td> {moment(shift.finish).format("hh:mm a")} </td>
                             <td> {shift.breakLength} </td>
                             <td> {((shiftLength - shift.breakLength) / 60).toFixed(2)} </td>
-                            <td> {`$${((shiftLength - shift.breakLength) / 60 * rate).toFixed(2)}`} </td>
+                            <td> {`$${shiftCost.toFixed(2)}`}</td>
                             <td>
                                 {user.id === shift.userId && 
                                     <> 
