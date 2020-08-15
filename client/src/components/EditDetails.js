@@ -3,6 +3,7 @@ import userApi from "../api/users"
 import handleChange from "../utilities/handleChange"
 
 const EditDetails = () => {
+
     const [details, setDetails] = useState({
         name: '',
         email: ''
@@ -13,11 +14,13 @@ const EditDetails = () => {
         load()
     }, [])
 
+    // api call to retrieve user data
     const load = async function() {
         const { data: { name, email } } = await userApi.getUser()
         setDetails({name, email})
     }
 
+    // api call to update user details and state
     const handleUpdate = async function () {
         try {
             const { data: { name, email} } = await userApi.updateUser(details)

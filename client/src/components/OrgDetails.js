@@ -10,6 +10,7 @@ const OrgDetails = ({organisation, updateOrgId, load, user}) => {
 
     const org = organisation[0]
 
+    // api call to leave organisation
     const handleLeave = async function () {
         await orgApi.leaveOrganisation()
         updateOrgId(null)

@@ -1,10 +1,14 @@
 .dashboard-container {
     display: flex;
     flex-direction: row;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .dashboard-content {
     padding: 20px;
+    overflow: scroll;
+    width: 100%;
 }
 
 #no-org-prompt {
@@ -40,7 +44,6 @@
     }
 }
 
-
 #org-manage {
     h3 {
         margin: 0;
@@ -58,6 +61,7 @@
 
     #shift-table {
         font-size: 0.9em;
+        width: 100%;
         thead {
             background-color: black;
             color: white;

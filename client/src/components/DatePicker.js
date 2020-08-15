@@ -1,6 +1,7 @@
 import React, {useReducer} from 'react'
 import {DateRangeInput} from '@datepicker-react/styled'
 
+// external npm component package installed to help filtering
 const initialState = {
   startDate: '',
   endDate: '',
@@ -24,6 +25,7 @@ const DatePicker = ({setDates}) => {
   return (
     <DateRangeInput
         onDatesChange={(data) => {
+            // prop function passed to change filter state
             setDates({
               startDate: data.startDate ? data.startDate : "",
               endDate: data.endDate ? data.endDate : ""

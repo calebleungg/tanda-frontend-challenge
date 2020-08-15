@@ -35,7 +35,7 @@ const Dashboard  = ({history}) => {
     }
 
     return (
-        <div className="dashboard-container"  >
+        <div className="dashboard-container">
             <SideBar history={history} />
             <div className="dashboard-content">
                 <h3> Hi, {user.name} </h3>

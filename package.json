@@ -4,6 +4,8 @@
     "license": "MIT",
     "scripts": {
       "backend:start": "cd backend && node index.js",
-      "backend:setup": "cd backend && yarn install"
+      "client:start": "cd client && yarn start",
+      "backend:setup": "cd backend && yarn install",
+      "client:setup": "cd client && yarn install"
     }
   }

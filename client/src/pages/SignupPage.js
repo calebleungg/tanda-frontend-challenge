@@ -21,6 +21,7 @@ const SignUp  = ({history}) => {
         confirm: null
     })
 
+    // api call to handle signup
     const handleSubmit = () => {
         let newErrors = {email: null, password: null, confirm: null}
 

@@ -28,6 +28,7 @@ export default function OrgEditForm({load}) {
         setOpen(false);
     };
 
+    // api call to create organisation
     const handleSubmit = async function () {
         try {
             await orgApi.createOrganisation(info)

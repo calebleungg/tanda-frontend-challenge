@@ -32,6 +32,7 @@ export default function NewOrgForm({details, load}) {
         setOpen(false);
     };
 
+    // api call to edit organisation
     const handleSubmit = async function () {
         try {
             await orgApi.updateOrganisation(details.id, info)

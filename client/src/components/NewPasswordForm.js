@@ -11,6 +11,7 @@ const NewPasswordForm = () => {
     })
     const [flash, setFlash] = useState(null)
 
+    // api call to change password
     const handleChangePassword = async function() {
         try {
             const change = await userApi.changePassword(newPassword)
@@ -20,6 +21,7 @@ const NewPasswordForm = () => {
             setFlash({message: "Current password is incorrect / passwords do not match", color: "red"})
         }
     }
+
     return (
         <div id="password-input" >
             <div className="edit-item" >

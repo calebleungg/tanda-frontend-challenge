@@ -16,6 +16,7 @@ const LoginPage  = ({history}) => {
     })
     const [error, setError] = useState(false)
     
+    // api call to handle login
     const handleSubmit = () => {
         authApi.login(credentials)
             .then(({data: {sessionId}}) => {
