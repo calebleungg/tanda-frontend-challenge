@@ -18,9 +18,11 @@ const ShiftTable = ({user, rate}) => {
         userId: user.id,
         start: '',
         finish: '',
-        breakLength: 0,
+        breakLength: [],
         organisationId: user.organisationId
     })
+
+    const [breaks, setBreaks] = useState([])
 
     const [shifts, setShifts] = useState([])
     const [users, setUsers] = useState([])
@@ -82,7 +84,9 @@ const ShiftTable = ({user, rate}) => {
         const newShift = {...shift,
             start: `${date} ${shift.start}`,
             finish: `${date} ${shift.finish}`,
+            breakLength: breaks
         }
+        // console.log(newShift)
         try {
             await shiftApi.createShift(newShift)
             load()
@@ -107,6 +111,33 @@ const ShiftTable = ({user, rate}) => {
         load()
     }
 
+    const renderBreakInputs = () => {
+        let output = []
+        breaks.map((item, index) => {
+            output.push(
+                <div key={index} >
+                    <input 
+                        type="number"
+                        id={`break-${index}`}
+                        value={item}
+                    /> <button onClick={()=>setBreaks(breaks.filter(value => item !== value))} > remove </button>
+                </div>
+            )
+        })
+        output.push(
+            <div >
+                <input 
+                    type="number"
+                    id={`break-${breaks.length}`}
+                /> <button onClick={() => {
+                    setBreaks([...breaks, Number(document.getElementById(`break-${breaks.length}`).value)])
+                }} > add </button>
+            </div>
+        )
+        return output
+    }
+
+   
 
     const renderShifts = () => {
         let output = []
@@ -285,11 +316,28 @@ const ShiftTable = ({user, rate}) => {
                             />
                         </td>
                         <td>
-                            <input 
-                                type="number"
-                                name="breakLength"
-                                onChange={(e) => handleChange(e, shift, setShift)}
-                            />
+                            {renderBreakInputs()}
+                            {/* <div>
+                                <input 
+                                    type="number"
+                                    name="breakLength"
+                                    onChange={(e) => handleChange(e, shift, setShift)}
+                                /> <button> add </button> <button> remove </button>
+                            </div>
+                            <div>
+                                <input 
+                                    type="number"
+                                    name="breakLength"
+                                    onChange={(e) => handleChange(e, shift, setShift)}
+                                /> <button> add </button> <button> remove </button>
+                            </div>
+                            <div>
+                                <input 
+                                    type="number"
+                                    name="breakLength"
+                                    onChange={(e) => handleChange(e, shift, setShift)}
+                                /> <button> add </button> <button> remove </button>
+                            </div> */}
                         </td>
                         <td>
                             <button onClick={handleSubmit} style={{width: "100%"}} > create </button>
